@@ -14,7 +14,7 @@ if sys.argv[-1] in ("submit", "publish"):
     sys.exit()
 
 packages = ["github3"]
-requires = ["requests>=0.13.8"]
+requires = ["requests>=0.14.0", "uricore>=0.1.2"]
 
 __version__ = ''
 with open('github3/__init__.py', 'r') as fd:
@@ -31,8 +31,9 @@ if not __version__:
 setup(
     name="github3.py",
     version=__version__,
-    description="Python wrapper for the GitHub API (http://developer.github.com/v3)",
-    long_description="\n\n".join([open("README.rst").read(), 
+    description=("Python wrapper for the GitHub API ",
+        "(http://developer.github.com/v3)"),
+    long_description="\n\n".join([open("README.rst").read(),
         open("HISTORY.rst").read()]),
     license=open('LICENSE').read(),
     author="Ian Cordasco",

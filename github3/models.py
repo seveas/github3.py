@@ -11,6 +11,7 @@ from json import dumps
 from requests import session
 from re import compile
 from github3.decorators import requires_auth
+from uricore import URI
 
 __url_cache__ = {}
 
@@ -114,6 +115,14 @@ class GitHubCore(GitHubObject):
         if not key in __url_cache__:
             __url_cache__[key] = '/'.join(parts)
         return __url_cache__[key]
+
+    @property
+    def _api(self):
+        return "{0.scheme}://{0.netloc}{0.path}".format(self._uri)
+
+    @_api.setter
+    def _api(self, uri):
+        self._uri = URI(uri)
 
     @property
     def ratelimit_remaining(self):
