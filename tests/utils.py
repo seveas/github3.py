@@ -6,14 +6,11 @@ import sys
 from mock import patch
 from io import BytesIO
 from unittest import TestCase
+from tests.fixtures import default, iterable, path
 
 
 def load(name):
     return json.load(path(name))
-
-
-def path(name, mode='r'):
-    return open('tests/json/{0}'.format(name), mode)
 
 
 class CustomExpecter(expecter.expect):
@@ -97,14 +94,11 @@ class BaseCase(TestCase):
         r.encoding = enc
 
         if path_name:
-            content = path(path_name).read().strip()
             if _iter:
-                content = '[{0}]'.format(content)
-                r.raw = BytesIO(content.encode())
-            elif sys.version_info > (3, 0):
-                r.raw = BytesIO(content.encode())
+                r.raw = iterable[path_name]
             else:
-                r.raw = BytesIO(content)
+                r.raw = default[path_name]
+            r.raw.seek(0)
         else:
             r.raw = BytesIO()
 
