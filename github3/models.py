@@ -58,6 +58,7 @@ class GitHubCore(GitHubObject):
         elif ses is None:
             ses = session()
         self._session = ses
+        self._uniq = json.get('id', None)
         headers = {
             # Only accept JSON responses
             'Accept': 'application/vnd.github.v3.full+json',
@@ -73,6 +74,9 @@ class GitHubCore(GitHubObject):
 
         # set a sane default
         self._github_url = 'https://api.github.com'
+
+    def __hash__(self):
+        return hash(self._uniq)
 
     def __repr__(self):
         return '<github3-core at 0x{0:x}>'.format(id(self))
