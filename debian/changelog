@@ -1,3 +1,10 @@
+github3.py (1.1.0-3) bionic; urgency=medium
+
+  * Long overdue update to the 1.x series
+  * The uritemplate packagename was changed
+
+ -- Dennis Kaarsemaker <dennis@kaarsemaker.net>  Mon, 16 Apr 2018 00:07:42 +0200
+
 github3.py (0.9.5-1) xenial; urgency=medium
 
   * New upstream version
