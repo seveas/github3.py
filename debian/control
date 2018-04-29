@@ -17,7 +17,7 @@ Description: Comprehensive wrapper around the GitHub v3 API
 
 Package: python3-github3.py
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}, python3-urllib3 (>= 1.7.1), python-requests (>= 2.0.0)
+Depends: ${misc:Depends}, ${python3:Depends}, python3-urllib3 (>= 1.7.1), python3-requests (>= 2.0.0)
 Description: Comprehensive wrapper around the GitHub v3 API
  Comprehensive wrapper around the GitHub v3 API
  .
